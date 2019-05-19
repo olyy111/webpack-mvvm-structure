@@ -1,5 +1,11 @@
 <template>
-    <h2 class="title">{{greeting}}</h2>
+    <div>
+        <h2 class="title">
+            {{greeting}}
+            <h3 class="subtitle">这是副标题</h3>
+        </h2>
+        <p class="content">这是一条新闻, 前天北京下了冰雹</p>
+    </div>
 </template>
 <script>
     export default {
@@ -15,13 +21,16 @@
                     return res.json()
                 })
                 .then(json => {
-                    this.greeting = json.texty
+                    this.greeting = json.text
                 })
         }
     }
 </script>
-<style scoped>
+<style scoped lang="scss">
     .title {
         color: green;
+        .subtitle {
+            color: pink;
+        }
     }
 </style>

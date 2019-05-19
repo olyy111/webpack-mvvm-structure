@@ -18,6 +18,10 @@ module.exports = {
                 use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader']
             },
             {
+                test: /\.scss$/,
+                use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader','sass-loader']
+            },
+            {
                 test: /\.vue$/,
                 loader: 'vue-loader'
             }
