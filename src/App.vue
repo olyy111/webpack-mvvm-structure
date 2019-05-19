@@ -1,14 +1,26 @@
 <template>
-    <h2 class="title">hello, VUE!!!!</h2>
+    <h2 class="title">{{greeting}}</h2>
 </template>
 <script>
     export default {
+        data() {
+            return {
+                greeting: ''
+            }
+        },
         created() {
-            alert('created hook')
+            fetch('/hello')
+                
+                .then(res => {
+                    return res.json()
+                })
+                .then(json => {
+                    this.greeting = json.texty
+                })
         }
     }
 </script>
-<style>
+<style scoped>
     .title {
         color: green;
     }

@@ -1,7 +1,11 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
+    optimization: {
+        minimizer: [new OptimizeCSSAssetsPlugin()]
+    },
     module: {
         rules: [
             {
@@ -31,6 +35,11 @@ module.exports = {
             chunkFilename: '[id].css',
         }),
         new VueLoaderPlugin()
-    ]
+    ],
+    devServer: {
+        proxy: {
+            '/hello': 'http://localhost:9898'
+        }
+    }
     
 }

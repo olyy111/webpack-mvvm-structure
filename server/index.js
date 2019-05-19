@@ -1,11 +1,12 @@
 var Koa = require('koa')
 var App = new Koa()
+var json = require('koa-json')
 
-
+App.use(json())
 App.use(function (ctx) {
-    console.log(ctx)
+    console.log('本次访问的url', ctx.request.url)
     if (ctx.request.url === '/hello') {
-        ctx.body = 'hello, koa'
+        ctx.body = {text: 'hello, koa'}
     } else {
         ctx.body = 'koa home page'
     }
