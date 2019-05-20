@@ -5,6 +5,7 @@
             <h3 class="subtitle">这是副标题</h3>
         </h2>
         <p class="content">这是一条新闻, 前天北京下了冰雹</p>
+        <img src="./landscape.jpg" alt="">
     </div>
 </template>
 <script>
