@@ -6,7 +6,7 @@ const path = require('path')
 module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist/'),
-        filename: 'static/js/[name].js','
+        filename: 'static/js/[name].js',
     },
     optimization: {
         minimizer: [new OptimizeCSSAssetsPlugin()]
