@@ -2,7 +2,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const path = require('path')
 module.exports = {
+    output: {
+        path: path.resolve(__dirname, 'dist/'),
+        filename: 'static/js/[name].js','
+    },
     optimization: {
         minimizer: [new OptimizeCSSAssetsPlugin()]
     },
@@ -15,7 +20,12 @@ module.exports = {
             {
                 test: /\.css$/,
                 
-                use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader']
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    }, 
+                    'css-loader'
+                ]
             },
             {
                 test: /\.scss$/,
@@ -27,7 +37,10 @@ module.exports = {
             },
             {
                 test: /\.(jpg|png|gif|svg)$/,
-                loader: 'file-loader'
+                loader: 'file-loader',
+                options: {
+                    name: 'static/imgs/[hash].[ext]'
+                }
             }
         ]
     },
@@ -39,7 +52,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: '[name].css',
+            filename: 'static/css/[name].css',
             chunkFilename: '[id].css',
         }),
         new VueLoaderPlugin()
