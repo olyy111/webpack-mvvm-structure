@@ -4,6 +4,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require('path')
 module.exports = {
+    devtool: 'cheap-module-eval-source-map',
     output: {
         path: path.resolve(__dirname, 'dist/'),
         filename: 'static/js/[name].js',

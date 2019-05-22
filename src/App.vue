@@ -16,6 +16,7 @@
             }
         },
         created() {
+            console.log('sourcemap')
             fetch('/hello')
                 
                 .then(res => {
