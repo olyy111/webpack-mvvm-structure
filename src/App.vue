@@ -16,15 +16,17 @@
             }
         },
         created() {
-            console.log('sourcemap')
-            fetch('/hello')
+            // console.log('sourcemap')
+            Promise.resolve('foo').then(val => alert(val))
+            const foo = (a, b) => a + b
+            // fetch('/hello')
                 
-                .then(res => {
-                    return res.json()
-                })
-                .then(json => {
-                    this.greeting = json.text
-                })
+            //     .then(res => {
+            //         return res.json()
+            //     })
+            //     .then(json => {
+            //         this.greeting = json.text
+            //     })
         }
     }
 </script>
