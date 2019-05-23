@@ -12,7 +12,8 @@
     export default {
         data() {
             return {
-                greeting: ''
+                greeting: '',
+                title: ''
             }
         },
         created() {
@@ -27,6 +28,12 @@
             //     .then(json => {
             //         this.greeting = json.text
             //     })
+        },
+        methods: {
+            sum(a, b) {
+                console.log(a + b)
+                return a + b
+            }
         }
     }
 </script>
