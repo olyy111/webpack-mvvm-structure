@@ -8,11 +8,21 @@ module.exports = {
     entry: ["@babel/polyfill", "./src/index.js"],
     output: {
         path: path.resolve(__dirname, 'dist/'),
-        filename: 'static/js/[name].js',
+        filename: 'static/js/[name].[contentHash].js',
         publicPath: '/'
     },
     optimization: {
-        minimizer: [new OptimizeCSSAssetsPlugin()]
+        minimizer: [new OptimizeCSSAssetsPlugin()],
+        splitChunks: {
+            cacheGroups: {
+                vendors: {
+                    test: /node_modules/,
+                    filename: 'vendors.[contentHash].js',
+                    chunks: 'all'
+                }
+            },
+        },
+        runtimeChunk: "single"
     },
     module: {
         rules: [
