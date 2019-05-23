@@ -17,12 +17,12 @@ module.exports = {
             cacheGroups: {
                 vendors: {
                     test: /node_modules/,
-                    filename: 'vendors.[contentHash].js',
+                    filename: 'vendors.[chunkhash].js',
                     chunks: 'all'
                 }
             },
         },
-        runtimeChunk: "single"
+        // runtimeChunk: "single"
     },
     module: {
         rules: [
