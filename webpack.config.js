@@ -11,6 +11,12 @@ module.exports = {
         filename: 'static/js/[name].[contentHash].js',
         publicPath: '/'
     },
+    resolve: {
+        extensions: ['.vue', '.js', '.css', '.scss'],
+        alias: {
+            '@': path.resolve(__dirname, 'src')
+        }
+    },
     optimization: {
         minimizer: [new OptimizeCSSAssetsPlugin()],
         splitChunks: {
