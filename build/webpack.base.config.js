@@ -1,12 +1,12 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require('path')
+console.log(__dirname, 'hjahjajjajjaj')
 module.exports = {
     entry: ["@babel/polyfill", "./src/index.js"],
     output: {
-        path: path.resolve(__dirname, 'dist/'),
+        path: path.resolve(__dirname, '../dist/'),
         filename: 'static/js/[name].[contentHash].js',
         publicPath: '/'
     },
@@ -42,11 +42,23 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        extensions: ['.vue', '.js', '.css', '.scss'],
+        alias: {
+            '@': path.resolve(__dirname, '../src')
+        }
+    },
     plugins: [
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: 'static/css/[name].css',
+            chunkFilename: '[id].css',
+        }),
         new HtmlWebpackPlugin({
             template: './index.html',
             filename: 'index.html'
         }),
-        new VueLoaderPlugin()
-    ],
+        new VueLoaderPlugin(),
+    ]
 }
