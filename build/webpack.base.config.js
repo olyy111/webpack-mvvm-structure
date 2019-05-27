@@ -1,13 +1,13 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const path = require('path')
-console.log(__dirname, 'hjahjajjajjaj')
 module.exports = {
     entry: ["@babel/polyfill", "./src/index.js"],
     output: {
         path: path.resolve(__dirname, '../dist/'),
-        filename: 'static/js/[name].[contentHash].js',
+        filename: 'static/js/[name].[chunkhash].js',
         publicPath: '/'
     },
     module: {
@@ -60,5 +60,11 @@ module.exports = {
             filename: 'index.html'
         }),
         new VueLoaderPlugin(),
+        new FriendlyErrorsWebpackPlugin({
+            compilationSuccessInfo: {
+                messages: ['You application is running here http://localhost:3000'],
+                notes: ['Some additional notes to be displayed upon successful compilation']
+            },
+        })
     ]
 }
