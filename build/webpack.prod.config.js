@@ -1,5 +1,6 @@
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base.config.js')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 module.exports = merge(baseConfig, {
   mode: 'production',
   optimization: {
