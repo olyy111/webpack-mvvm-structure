@@ -1,6 +1,11 @@
-const greeter = Promise.resolve('hello, world')
-const sendHello = async () => {
-  const data = await greeter
-  console.log(data)
+import React from 'react'
+import ReactDOM from 'react-dom'
+class App extends React.Component {
+  render() {
+    return <h2>hello， 这是一个react应用</h2>
+  }
 }
-sendHello()
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+)
