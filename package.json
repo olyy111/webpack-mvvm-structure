@@ -1,0 +1,20 @@
+{
+  "name": "webpack4-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:olyy111/webpack-mvvm-structure.git",
+  "author": "zhangliang7 <zl7511555@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6"
+  }
+}
