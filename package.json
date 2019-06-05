@@ -6,8 +6,8 @@
   "author": "zhangliang7 <zl7511555@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server"
+    "build": "webpack --config build/webpack.config.prod.js",
+    "dev": "webpack-dev-server --config build/webpack.config.dev.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
@@ -15,17 +15,18 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "style-loader": "^0.23.1",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2",
-    "css-loader": "^2.1.1",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
-    "webpack-dev-server": "^3.5.1"
+    "style-loader": "^0.23.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.5.1",
+    "webpack-merge": "^4.2.1"
   }
 }
