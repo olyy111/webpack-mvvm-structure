@@ -1,0 +1,16 @@
+{
+  "name": "webpack4-react-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-json": "^2.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
