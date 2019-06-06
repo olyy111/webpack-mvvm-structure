@@ -12,6 +12,7 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
+    // throw new Error("don't allowed into the component")
     fetch('/weather')
       .then(res => {
         return res.json()
@@ -21,8 +22,6 @@ class App extends React.Component {
       })
   }
   render() {
-    
-     
     return <div>
      <h2 className="title">hello， 这是一个react应用</h2>
      <p class="content">react 是一个mvvm 框架</p>
