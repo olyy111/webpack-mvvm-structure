@@ -14,6 +14,18 @@ module.exports = merge(baseConfig, {
     quiet: true, // 清楚dev编译无用的console信息
     proxy
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
+  },
   plugins: [
     new FriendlyErrorsWebpackPlugin({ // 添加成功提示和自定义信息
       compilationSuccessInfo: {
