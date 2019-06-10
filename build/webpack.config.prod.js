@@ -1,9 +1,14 @@
 var merge = require('webpack-merge')
 var baseConfig = require('./webpack.config.base.js')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+var TerserPlugin = require('terser-webpack-plugin');
 
 console.log('----prod-----')
 module.exports = merge(baseConfig, {
+  optimization: {
+      minimizer: [new OptimizeCSSAssetsPlugin(), new TerserPlugin()],
+  },
   module: {
     rules: [
       {
