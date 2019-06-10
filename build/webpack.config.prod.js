@@ -8,7 +8,8 @@ var subDirectory = 'static/'
 console.log('----prod-----')
 module.exports = merge(baseConfig, {
   output: {
-    filename: subDirectory + 'js/[name].[chunkhash].js'
+    filename: subDirectory + 'js/[name].[chunkhash].js',
+    // publicPath: '/' 加入了publicPath成为一个绝对路径后, 如果从本地打开， 就会有问题， 访问本地的绝对路径
   },
   optimization: {
       minimizer: [new OptimizeCSSAssetsPlugin()],
