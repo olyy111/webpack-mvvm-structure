@@ -1,4 +1,5 @@
-var  merge = require('webpack-merge')
+var webpack = require('webpack')
+var merge = require('webpack-merge')
 var baseConfig =  require('./webpack.config.base.js')
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 var port = 6611
@@ -34,5 +35,6 @@ module.exports = merge(baseConfig, {
         ].concat(SuccessProxyMsg)
       },
     }),
+    new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") }),
   ],
 })
