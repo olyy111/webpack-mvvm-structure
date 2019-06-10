@@ -9,6 +9,9 @@ var proxy = {
 var SuccessProxyMsg = Object.keys(proxy).map(prefix => `前缀为${prefix}的请求代理在${proxy[prefix]}上`)
 console.log('----dev-----')
 module.exports = merge(baseConfig, {
+  output: {
+    filename: '[name].js'
+  },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     port,
