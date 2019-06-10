@@ -2,21 +2,19 @@ var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseConfig =  require('./webpack.config.base.js')
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-var port = 6611
-var proxy = {
-  '/weather': 'http://localhost:5566',
-}
-var SuccessProxyMsg = Object.keys(proxy).map(prefix => `前缀为${prefix}的请求代理在${proxy[prefix]}上`)
-console.log('----dev-----')
+var devConfig = require('../config').dev
+
+var SuccessProxyMsg = Object.keys(devConfig.proxy).map(prefix => `前缀为${prefix}的请求代理在${devConfig.proxy[prefix]}上`)
+console.log('-----------dev打包----------')
 module.exports = merge(baseConfig, {
   output: {
     filename: '[name].js'
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
-    port,
+    port: devConfig.port,
     quiet: true, // 清楚dev编译无用的console信息
-    proxy
+    proxy: devConfig.proxy
   },
   module: {
     rules: [
@@ -34,7 +32,7 @@ module.exports = merge(baseConfig, {
     new FriendlyErrorsWebpackPlugin({ // 添加成功提示和自定义信息
       compilationSuccessInfo: {
         messages: [
-          `You application is running here http://localhost:${port}`,
+          `You application is running here http://localhost:${devConfig.port}`,
         ].concat(SuccessProxyMsg)
       },
     }),

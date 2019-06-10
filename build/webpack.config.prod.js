@@ -4,12 +4,12 @@ var baseConfig = require('./webpack.config.base.js')
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 var TerserPlugin = require('terser-webpack-plugin');
-var subDirectory = 'static/'
-console.log('----prod-----')
+var prodConfig = require('../config').prod
+console.log('----------prod打包--------')
 module.exports = merge(baseConfig, {
   output: {
-    filename: subDirectory + 'js/[name].[chunkhash].js',
-    // publicPath: '/' 加入了publicPath成为一个绝对路径后, 如果从本地打开， 就会有问题， 访问本地的绝对路径
+    filename: prodConfig.subDirectory + 'js/[name].[chunkhash].js',
+    // publicPath: prodConfig.publicPath 加入了publicPath成为一个绝对路径后, 如果从本地打开， 就会有问题， 访问本地的绝对路径
   },
   optimization: {
       minimizer: [new OptimizeCSSAssetsPlugin()],
@@ -17,7 +17,7 @@ module.exports = merge(baseConfig, {
         cacheGroups: {
           vendors: {
             test: /node_modules/,
-            filename: subDirectory + 'js/vendors.[chunkhash].js',
+            filename: prodConfig.subDirectory + 'js/vendors.[chunkhash].js',
             chunks: 'all'
           }
         }
@@ -50,7 +50,7 @@ module.exports = merge(baseConfig, {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: subDirectory + 'css/[name].[contenthash].css',
+      filename: prodConfig.subDirectory + 'css/[name].[contenthash].css',
     }),
     new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
     new TerserPlugin({
