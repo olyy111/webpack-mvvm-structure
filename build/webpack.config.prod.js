@@ -9,6 +9,15 @@ console.log('----prod-----')
 module.exports = merge(baseConfig, {
   optimization: {
       minimizer: [new OptimizeCSSAssetsPlugin()],
+      splitChunks: {
+        cacheGroups: {
+          vendors: {
+            test: /node_modules/,
+            filename: 'vendors.[chunkhash].js',
+            chunks: 'all'
+          }
+        }
+      }
   },
   module: {
     rules: [
