@@ -46,7 +46,7 @@ module.exports = merge(baseConfig, {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: '[name].[chunkhash].css',
+      filename: '[name].[contenthash].css',
     }),
     new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
     new TerserPlugin({

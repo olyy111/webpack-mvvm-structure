@@ -13,7 +13,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     // throw new Error("don't allowed into the component")
-    console.log(process.env.NODE_ENV)
+    console.log('当前环境是', process.env.NODE_ENV)
     fetch('/weather')
       .then(res => {
         return res.json()

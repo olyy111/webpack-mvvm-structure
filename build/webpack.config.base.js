@@ -3,6 +3,12 @@ var path = require('path');
 console.log(1111, __dirname)
 module.exports = {
   mode: 'none',
+  entry: {
+    app: path.resolve(__dirname, '../src/index.js')
+  },
+  output: {
+    filename: '[name].[chunkhash].js'
+  },
   module: {
     rules: [
       {
