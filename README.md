@@ -1,4 +1,18 @@
 # vueWebpackStructure
+## 运行
+### 启动后端服务器, 模拟proxy功能实现
+```
+cd backend
+yarn
+yarn server
+```
+### 启动开发编译
+```
+cd ..
+yarn
+yarn dev // 开发编译
+yarn build // 生产编译
+```
 
 ## TODO
 ### 公共
