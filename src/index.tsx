@@ -1,11 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import './index.css'
 import './index.scss'
 
-class App extends React.Component {
-  constructor() {
-    super()
+interface AppState {
+  temperature: number,
+  himidity: number
+}
+class App extends React.Component<{}, AppState> {
+  constructor(props) {
+    super(props)
     this.state = {
       temperature: 0,
       himidity: 0,
@@ -24,8 +28,8 @@ class App extends React.Component {
   }
   render() {
     return <div>
-     <h2 className="title">hello， 这是一个react应用, 3</h2>
-     <p class="content">react 是一个mvvm 框架</p>
+     <h2 className="title">hello， 这是一个react应用, 1</h2>
+     <p className="content">react 是一个mvvm 框架</p>
      <div>
         <h3>江西天气预报</h3>
         <p>温度: {this.state.temperature} </p>
