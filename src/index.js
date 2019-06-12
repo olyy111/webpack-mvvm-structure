@@ -24,7 +24,7 @@ class App extends React.Component {
   }
   render() {
     return <div>
-     <h2 className="title">hello， 这是一个react应用</h2>
+     <h2 className="title">hello， 这是一个react应用, 3</h2>
      <p class="content">react 是一个mvvm 框架</p>
      <div>
         <h3>江西天气预报</h3>

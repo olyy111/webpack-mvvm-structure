@@ -10,6 +10,10 @@ module.exports = merge(baseConfig, {
   output: {
     filename: '[name].js'
   },
+  cache: true,
+  stats: {
+    timings: true
+  },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     port: devConfig.port,
@@ -30,6 +34,7 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin({ // 添加成功提示和自定义信息
+      clearConsole: false,
       compilationSuccessInfo: {
         messages: [
           `You application is running here http://localhost:${devConfig.port}`,
