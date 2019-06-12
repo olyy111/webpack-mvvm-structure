@@ -4,6 +4,7 @@
       "module": "esnext",
       "target": "es6",
       "jsx": "react",
+      "moduleResolution": "node"
   },
   "include": [
       "./src/**/*"
