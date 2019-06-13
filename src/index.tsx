@@ -18,13 +18,13 @@ class App extends React.Component<{}, AppState> {
   componentDidMount() {
     // throw new Error("don't allowed into the component")
     console.log('当前环境是', process.env.NODE_ENV)
-    fetch('/weather')
-      .then(res => {
-        return res.json()
-      })
-      .then(weatherJson => {
-        this.setState({...this.state, ...weatherJson})
-      })
+    // fetch('/weather')
+    //   .then(res => {
+    //     return res.json()
+    //   })
+    //   .then(weatherJson => {
+    //     this.setState({...this.state, ...weatherJson})
+    //   })
   }
   render() {
     return <div>

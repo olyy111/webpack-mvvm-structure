@@ -11,11 +11,19 @@ module.exports = {
   module: {
     rules: [
       { test: /\.(tsx|ts)?$/, 
-        loader: "ts-loader",
-        options: {
-          configFile: '../tsconfig.js',
-          transpileOnly: true
-        }
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: '../tsconfig.js',
+              transpileOnly: true
+            }
+          }
+        ]
       },
       {
         test: /\.js$/,
