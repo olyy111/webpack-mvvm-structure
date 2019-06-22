@@ -12,7 +12,6 @@ module.exports = merge(baseConfig, {
     // publicPath: prodConfig.publicPath 加入了publicPath成为一个绝对路径后, 如果从本地打开， 就会有问题， 访问本地的绝对路径
   },
   optimization: {
-      minimizer: [new OptimizeCSSAssetsPlugin()],
       splitChunks: {
         cacheGroups: {
           vendors: {
@@ -52,6 +51,7 @@ module.exports = merge(baseConfig, {
       // both options are optional
       filename: prodConfig.subDirectory + 'css/[name].[contenthash].css',
     }),
+    new OptimizeCSSAssetsPlugin(),
     new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
     new TerserPlugin({
       test: /\.js(\?.*)?$/i
