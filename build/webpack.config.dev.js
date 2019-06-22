@@ -2,6 +2,7 @@ var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseConfig =  require('./webpack.config.base.js')
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+var slash = require('slash')
 var devConfig = require('../config').dev
 
 var SuccessProxyMsg = Object.keys(devConfig.proxy).map(prefix => `前缀为${prefix}的请求代理在${devConfig.proxy[prefix]}上`)
@@ -24,11 +25,62 @@ module.exports = merge(baseConfig, {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [
+          'style-loader', 
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              getLocalIdent: (context, localIdentName, localName, options) => {
+                if (
+                  context.resourcePath.includes('node_modules')
+                ) {
+                  return '';
+                }
+                const match = context.resourcePath.match(/src(.*)/);
+                if (match && match[1]) {
+                  const projectPath = match[1].replace('.css', '');
+                  const arr = slash(projectPath)
+                    .split('/')
+                    .map(a => a.replace(/([A-Z])/g, '-$1'))
+                    .map(a => a.toLowerCase());
+                  return `projectname${arr.join('-')}-${localName}`.replace(/--/g, '-');
+                }
+                return '';
+              }
+            }
+          },
+        ]
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: [
+          'style-loader', 
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              getLocalIdent: (context, localIdentName, localName, options) => {
+                if (
+                  context.resourcePath.includes('node_modules')
+                ) {
+                  return '';
+                }
+                const match = context.resourcePath.match(/src(.*)/);
+                if (match && match[1]) {
+                  const projectPath = match[1].replace('.scss', '');
+                  const arr = slash(projectPath)
+                    .split('/')
+                    .map(a => a.replace(/([A-Z])/g, '-$1'))
+                    .map(a => a.toLowerCase());
+                  return `projectname${arr.join('-')}-${localName}`.replace(/--/g, '-');
+                }
+                return '';
+              }
+            }
+          }, 
+          'sass-loader'
+        ]
       }
     ]
   },

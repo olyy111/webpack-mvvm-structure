@@ -1,8 +1,8 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import './index.css'
-import './index.scss'
-
+import styles from './index.css'
+import styles2 from './index.scss'
+console.log(styles)
 interface AppState {
   temperature: number,
   himidity: number
@@ -28,8 +28,8 @@ class App extends React.Component<{}, AppState> {
   }
   render() {
     return <div>
-     <h2 className="title">hello， 这是一个react应用</h2>
-     <p className="content">react 是一个mvvm 框架</p>
+     <h2 className={styles.title}>hello， 这是一个react应用</h2>
+     <p className={styles2.content}>react 是一个mvvm 框架</p>
      <div>
         <h3>江西天气预报</h3>
         <p>温度: {this.state.temperature} </p>
