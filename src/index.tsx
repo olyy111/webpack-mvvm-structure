@@ -1,7 +1,9 @@
+import { hot } from 'react-hot-loader/root';
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import styles from './index.css'
 import styles2 from './index.scss'
+import News from './New.tsx'
 console.log(styles)
 interface AppState {
   temperature: number,
@@ -35,10 +37,13 @@ class App extends React.Component<{}, AppState> {
         <p>温度: {this.state.temperature} </p>
         <p>湿度: {this.state.himidity}</p>
      </div>
+     <News></News>
     </div>
   }
 }
+
+const HotApp = hot(App)
 ReactDOM.render(
-  <App />,
+  <HotApp />,
   document.getElementById('root')
 )

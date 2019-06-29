@@ -19,7 +19,8 @@ module.exports = merge(baseConfig, {
   devServer: {
     port: devConfig.port,
     quiet: true, // 清楚dev编译无用的console信息
-    proxy: devConfig.proxy
+    proxy: devConfig.proxy,
+    hot: true
   },
   module: {
     rules: [
