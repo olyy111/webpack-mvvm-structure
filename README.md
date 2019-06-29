@@ -37,3 +37,29 @@ yarn build // 生产编译
 
 ### 优化
 - [x] 提高编译速度, 设置cache为true
+
+## 优化
+热更新-局部更新
+[webpack官方文档 Hot Module Replacement](https://webpack.js.org/guides/hot-module-replacement/)
+搭配
+[react-hot-loader](https://github.com/gaearon/react-hot-loader)
+```javascript
+// build/webpack.config.dev.js
+devServer: {
+  // ...
+  hot: true
+}
+```
+```javascript
+// 入口文件index.tsx
+import { hot } from 'react-hot-loader/root';
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+// ...
+
+const HotApp = hot(App)
+ReactDOM.render(
+  <HotApp />,
+  document.getElementById('root')
+)
+```
