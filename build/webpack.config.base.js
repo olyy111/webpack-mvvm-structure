@@ -1,7 +1,7 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+var DllReferencePlugin = require('webpack').DllReferencePlugin;
 var path = require('path');
-console.log(1111, __dirname)
 module.exports = {
   mode: 'none',
   entry: {
@@ -37,6 +37,9 @@ module.exports = {
       template: 'index.html',
       filename: 'index.html'
     }),
-    new ForkTsCheckerWebpackPlugin({tsconfig: path.resolve(__dirname, '../tsconfig.js')})
+    new ForkTsCheckerWebpackPlugin({tsconfig: path.resolve(__dirname, '../tsconfig.js')}),
+    new DllReferencePlugin({
+      manifest: require('../dist/static/js/mvvm.manifest.json')
+    })
   ]
 }

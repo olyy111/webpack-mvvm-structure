@@ -6,7 +6,8 @@
   "author": "zhangliang7 <zl7511555@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist/&&webpack --config build/webpack.config.prod.js",
+    "build": "webpack --config build/webpack.config.prod.js",
+    "build:dll": "webpack --config build/webpack.config.dll.js",
     "dev": "webpack-dev-server --config build/webpack.config.dev.js"
   },
   "dependencies": {
